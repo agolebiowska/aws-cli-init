@@ -1,0 +1,16 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "PutUpdateDeleteOnRides",
+      "Effect": "Allow",
+      "Action": [
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:*"
+      ],
+      "Resource": "arn:aws:dynamodb:us-west-1:000000000000:table/test"
+    }
+  ]
+}

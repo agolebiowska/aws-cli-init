@@ -1,0 +1,24 @@
+---
+version: '3.2'
+
+services:
+  localstack:
+    image: localstack/localstack
+    ports:
+      - 4567-4597:4567-4597
+      - 8080:8080
+    environment:
+      AWS_DEFAULT_REGION: us-west-1
+      AWS_ACCESS_KEY_ID: access
+      AWS_SECRET_ACCESS_KEY: secret
+      SERVICES: apigateway,iam,lambda,s3,dynamodb
+      LAMBDA_EXECUTOR: local
+      LAMBDA_REMOTE_DOCKER: 0
+      LAMBDA_DOCKER_NETWORK: localhost
+      START_WEB: 1
+      DEBUG: 1
+      DOCKER_HOST: unix:///var/run/docker.sock
+      LOCALSTACK_HOST: localhost
+      LOCALSTACK_HOSTNAME_EXTERNAL: localhost
+    volumes:
+      - $PWD/localstack:/docker-entrypoint-initaws.d
